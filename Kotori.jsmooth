@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<jsmoothproject>
+    <embeddedJar>true</embeddedJar>
+    <iconLocation>src/main/resources/img/rei_all.ico</iconLocation>
+    <executableName>kotori.exe</executableName>
+    <initialMemoryHeap>-1</initialMemoryHeap>
+    <jarLocation>target/scala-2.10/kotori_fat.jar</jarLocation>
+    <mainClassName>Checker</mainClassName>
+    <minimumMemoryHeap>-1</minimumMemoryHeap>
+    <maximumMemoryHeap>1073741824</maximumMemoryHeap>
+    <maximumVersion></maximumVersion>
+    <minimumVersion></minimumVersion>
+    <skeletonName>Window Wrapper</skeletonName>
+    <skeletonProperties>
+        <key>Message</key>
+        <value>This program needs Java to run.
+            Please download it at http://www.java.com</value>
+    </skeletonProperties>
+    <skeletonProperties>
+        <key>PressKey</key>
+        <value>0</value>
+    </skeletonProperties>
+    <skeletonProperties>
+        <key>Debug</key>
+        <value>0</value>
+    </skeletonProperties>
+</jsmoothproject>
