@@ -1,5 +1,5 @@
 import java.awt._
-import java.awt.event.{KeyEvent, KeyAdapter, WindowEvent, WindowAdapter}
+import java.awt.event._
 import javax.swing.{BoxLayout, UIManager}
 
 /**
@@ -13,15 +13,14 @@ object MyEvent extends WindowAdapter {
 class KotoriMainWindow extends WindowAdapter {
   UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName)
 
-  object TextFieldKeyListener extends KeyAdapter {
-    override def keyReleased(e:KeyEvent): Unit = {
-      if (e.getKeyCode == 10) {
-        println(input.getText)
-        output.setText(convert(input.getText))
-      }
+  object TextFieldFocusListener extends FocusAdapter {
+    override def focusLost(e:FocusEvent): Unit = {
+      println(input.getText)
+      output.setText(convert(input.getText))
     }
   }
-  val input = new TextArea{addKeyListener(TextFieldKeyListener)}
+
+  val input = new TextArea{addFocusListener(TextFieldFocusListener)}
   val output = new TextArea{setEditable(false)}
 
   private def convert(input:String):String = new KotoriLogic().parse(input)
