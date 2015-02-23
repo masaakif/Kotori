@@ -19,6 +19,7 @@ val jar2exe = inputKey[Unit]("Use jsmooth to create exe from jar")
 jar2exe := { import scala.sys.process.Process
 	val jsmooth = """C:\D-Drive\developments\environments\Java\jsmooth\jsmoothcmd.exe"""
 	Process(s"$jsmooth ${baseDirectory.value}\\${name.value}.jsmooth").run()
+  println(s"Execute $jsmooth ${baseDirectory.value}\\${name.value}.jsmooth")
 	println(s"Finished making ${name.value} exe file.") }
 
 // Test
@@ -34,6 +35,8 @@ resolvers ++= Seq("snapshots", "releases").map(Resolver.sonatypeRepo)
 assemblySettings
 
 jarName := name.value + "_fat.jar"
+
+test in assembly := {}
 
 val assemblyAll = inputKey[Unit]("Do assembly then jar2exe")
 
