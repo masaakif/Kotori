@@ -22,5 +22,31 @@ class KotoriLogicSpec extends Specification {
     "'[GUI-1234] - hogehoge\r\n[XILIX-1234] - fugafuga' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge'\r\n'=hyperlink(\"http://jira/browse/XILIX-1234\",\"XILIX-1234\")\tfugafuga'" in {
       kl.parse("[GUI-1234] - hogehoge\r\n[XILIX-1234] - fugafuga") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge\r\n=hyperlink(\"http://jira/browse/XILIX-1234\",\"XILIX-1234\")\tfugafuga"
     }
+    "1234 not converted" in {
+      kl.parse("1234") must_== "1234"
+    }
+    "'GUI-1234 hogehoge' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge'" in {
+      kl.parse("GUI-1234 hogehoge") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge"
+    }
+    "'GUI-1234\\thogehoge' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge'" in {
+      kl.parse("GUI-1234\thogehoge") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge"
+    }
+    "'GUI-1234 \\t hogehoge' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge'" in {
+      kl.parse("GUI-1234 \t hogehoge") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge"
+    }
+    "'[GUI-1234] \\t hogehoge' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge'" in {
+      kl.parse("[GUI-1234] \t hogehoge") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge"
+    }
+    "'\r\n' not converted" in {
+      kl.parse("") must_== ""
+    }
+    "'[GUI-1234]\r\n' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")" in {
+      kl.parse("[GUI-1234]\r\n") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")"
+    }
+    /*
+    "'1234\r\n\r\n\r\n\r\n1234' convert to '1234\r\n1234'" in {
+      kl.parse("1234\r\n\r\n\r\n\r\n1234") must_== "1234\r\n1234"
+    }
+    */
   }
 }
