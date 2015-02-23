@@ -4,12 +4,23 @@
 
 import org.specs2.mutable._
 
-class KotoriLogicSpec extends Specification { override def is = s2"""
-  This is a specification of KotoriLogic's conversion
-    '[GUI-1234]' -> '=hyperlink("http://jira/browse/GUI-1234","[GUI-1234]")'                  $e1
-    '[GUI-1234] - hogehoge' -> '=hyperlink("http://jira/browse/GUI-5311","GUI-5311")  hogehoge' $e2"""
-
-	val kl = new KotoriLogic
-	def e1 = kl.parse("[GUI-1234]") must_== """=hyperlink("http://jira/browse/GUI-1234","GUI-1234")"""
-	def e2 = kl.parse("[GUI-1234] - hogehoge") must_== """=hyperlink("http://jira/browse/GUI-1234","GUI-1234")	hogehoge"""
+class KotoriLogicSpec extends Specification {
+  val kl = new KotoriLogic
+  "JIRA line" should {
+    "[GUI-1234] convert to =hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")" in {
+      kl.parse("[GUI-1234]") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")"
+    }
+    "'[GUI-1234] - hogehoge' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge'" in {
+      kl.parse("[GUI-1234] - hogehoge") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge"
+    }
+    "'[GUI-1234] - [XILIX-1234] hogehoge' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\t[XILIX-1234] hogehoge'" in {
+      kl.parse("[GUI-1234] - [XILIX-1234] hogehoge") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\t[XILIX-1234] hogehoge"
+    }
+    "'[XILIX-1234] - fugafuga' convert to '=hyperlink(\"http://jira/browse/XILIX-1234\",\"XILIX-1234\")\tfugafuga'" in {
+      kl.parse("[XILIX-1234] - fugafuga") must_== "=hyperlink(\"http://jira/browse/XILIX-1234\",\"XILIX-1234\")\tfugafuga"
+    }
+    "'[GUI-1234] - hogehoge\r\n[XILIX-1234] - fugafuga' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge'\r\n'=hyperlink(\"http://jira/browse/XILIX-1234\",\"XILIX-1234\")\tfugafuga'" in {
+      kl.parse("[GUI-1234] - hogehoge\r\n[XILIX-1234] - fugafuga") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\thogehoge\r\n=hyperlink(\"http://jira/browse/XILIX-1234\",\"XILIX-1234\")\tfugafuga"
+    }
+  }
 }
