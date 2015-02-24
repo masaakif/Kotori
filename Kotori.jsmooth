@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <jsmoothproject>
     <embeddedJar>true</embeddedJar>
-    <!--
-    <iconLocation>src/main/resources/img/rei_all.ico</iconLocation>
-    -->
+    <iconLocation>src/main/resources/kotori_all.ico</iconLocation>
     <executableName>kotori.exe</executableName>
     <initialMemoryHeap>-1</initialMemoryHeap>
     <jarLocation>target/scala-2.11/kotori_fat.jar</jarLocation>
