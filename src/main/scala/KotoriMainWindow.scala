@@ -31,7 +31,7 @@ class KotoriMainWindow extends WindowAdapter {
   val input = new TextArea{addFocusListener(TextFieldFocusListener)}
   val output = new TextArea{setEditable(false)}
 
-  private def convert(input:String):String = new KotoriLogic().parse(input)
+  private def convert(input:String):String = new KotoriLogic().parseAndAppend(input)
 
   val frame = new Frame {
     setTitle("Kotori - to convert JIRA ID to URL style")
