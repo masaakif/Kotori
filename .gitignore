@@ -3,6 +3,9 @@
 *.class
 *.cache
 *.log
+*.zip
+*.xls
+*.xlsx
 
 # sbt specific
 .cache
