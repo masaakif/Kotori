@@ -33,6 +33,9 @@ project/plugins/project/
 .idea/dynamic.xml
 .idea/uiDesigner.xml
 
+# Plugins
+.idea/qaplug_profiles.xml
+.idea/libraries/SBT*.xml
 out/
 .idea_modules/
 
