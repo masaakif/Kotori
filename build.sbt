@@ -17,26 +17,12 @@ libraryDependencies ++= Seq(
 	, "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.3"
 	, ("org.seleniumhq.selenium" % "selenium-htmlunit-driver" % "2.44.0")
 		.exclude("org.apache.commons","commons-exec")
-		//.exclude("org.seleniumhq.selenium","selenium-remote-driver")
-		//.exclude("org.apache.httpcomponents","httpclient")
-		//.exclude("org.apache.httpcomponents","httpmime")
-		//.exclude("org.w3c.css","sac")
 		.exclude("xalan","serializer")
-		//.exclude("xalan","xalan")
-		//.exclude("xerces","xercesImpl")
-		//.exclude("xml-apis","xml-apis")
 		.excludeAll(
-		//ExclusionRule(organization = "net.sourceforge.htmlunit"),
 		ExclusionRule(organization = "cglib"),
 		ExclusionRule(organization = "com.google.code.gson"),
 		ExclusionRule(organization = "com.google.guava"),
 		ExclusionRule(organization = "org.eclipse.jetty"),
-		//ExclusionRule(organization = "net.sourceforge.cssparser"),
-		//ExclusionRule(organization = "net.sourceforge.nekohtml"),
-		//ExclusionRule(organization = "commons-codec"),
-		//ExclusionRule(organization = "commons-collections"),
-		//ExclusionRule(organization = "commons-io"),
-		//ExclusionRule(organization = "commons-logging"),
 		ExclusionRule(organization = "net.java.dev.jna")
 		)
 )
