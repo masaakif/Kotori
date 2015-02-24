@@ -15,6 +15,10 @@
         <option name="resolveSbtClassifiers" value="true" />
         <option name="sbtVersion" value="0.13.5" />
       </SbtProjectSettings>
+      <SbtProjectSettings>
+        <option name="externalProjectPath" value="C:\D-Drive\Developments\idea_projects\Kotori" />
+        <option name="useAutoImport" value="true" />
+      </SbtProjectSettings>
     </option>
   </component>
 </project>
