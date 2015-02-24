@@ -40,13 +40,11 @@ class KotoriLogicSpec extends Specification {
     "'\r\n' not converted" in {
       kl.parse("") must_== ""
     }
-    "'[GUI-1234]\r\n' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")" in {
-      kl.parse("[GUI-1234]\r\n") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")"
+    "'[GUI-1234] - a\r\n' convert to '=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")" in {
+      kl.parse("[GUI-1234] - a\r\n") must_== "=hyperlink(\"http://jira/browse/GUI-1234\",\"GUI-1234\")\ta"
     }
-    /*
     "'1234\r\n\r\n\r\n\r\n1234' convert to '1234\r\n1234'" in {
       kl.parse("1234\r\n\r\n\r\n\r\n1234") must_== "1234\r\n1234"
     }
-    */
   }
 }
