@@ -55,6 +55,8 @@ class KotoriLogicSpec extends Specification {
     "[GUI-5037] append to 'Improvement\t=hyperlink(\"http://jira/browse/GUI-5037\",\"GUI-5037\")\tKimco'" in {
       kl.parseAndAppend("GUI-5037") must_== "Improvement\t=hyperlink(\"http://jira/browse/GUI-5037\",\"GUI-5037\")\tKimco"
     }
-	  ""
+	  "'[GUI-5037] - hogehoge' append to 'Improvement\t=hyperlink(\"http://jira/browse/GUI-5037\",\"GUI-5037\")\tKimco'" in {
+		  kl.parseAndAppend("GUI-5037 - hogehoge") must_== "Improvement\t=hyperlink(\"http://jira/browse/GUI-5037\",\"GUI-5037\")\thogehoge\tKimco"
+	  }
   }
 }
