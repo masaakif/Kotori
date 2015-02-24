@@ -32,6 +32,9 @@ project/plugins/project/
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/misc.xml
+.idea/sbt.xml
+.idea/scala_compiler.xml
 
 # Plugins
 .idea/qaplug_profiles.xml
