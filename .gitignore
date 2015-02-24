@@ -33,7 +33,6 @@ project/plugins/project/
 .idea/dynamic.xml
 .idea/uiDesigner.xml
 .idea/misc.xml
-.idea/sbt.xml
 .idea/scala_compiler.xml
 
 # Plugins
