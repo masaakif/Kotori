@@ -32,10 +32,19 @@ val jar2exe = taskKey[Unit]("Use jsmooth to create exe from jar")
 
 jar2exe := { import scala.sys.process.Process
 	val jsmooth = """C:\D-Drive\developments\environments\Java\jsmooth\jsmoothcmd.exe"""
-	Process(s"$jsmooth ${baseDirectory.value}\\${name.value}.jsmooth").run()
-  println(s"Execute $jsmooth ${baseDirectory.value}\\${name.value}.jsmooth")
-	println(s"Finished making ${name.value} exe file.") }
+	val jsmoothxml = s"${baseDirectory.value}\\${name.value}.jsmooth"
+	Process(s"$jsmooth $jsmoothxml").run()
+  println(s"Execute $jsmooth $jsmoothxml}")
+	println(s"Finished making ${name.value} exe file by jsmoot.") }
 
+val launch4j = taskKey[Unit]("Use launch4j to create exe from jar")
+
+launch4j := { import scala.sys.process.Process
+	val l4j = "\"C:\\Program Files (x86)\\Launch4j\\launch4jc.exe\""
+	val l4jxml = s"${baseDirectory.value}\\${name.value}_l4j.xml"
+	Process(s"${l4j} ${l4jxml}").run()
+	println(s"Execute ${l4j} ${l4jxml}")
+	println(s"Finished making ${name.value} exe file by launch4j.") }
 // Test
 scalacOptions in Test ++= Seq("-Yrangepos")
 
@@ -51,4 +60,4 @@ test in assembly := {}
 
 val assemblyAll = taskKey[Unit]("Do assembly then jar2exe")
 
-assemblyAll <<= jar2exe dependsOn assembly
+assemblyAll <<= launch4j dependsOn assembly
