@@ -9,7 +9,7 @@ class KotoriLogic extends RegexParsers {
 
   def lines = repsep(line, eol)
   def line = jiraLine | other
-  def other = "[^\r\n]*".r ^^ {_=>""}
+  def other = "[^\r\n]*".r ^^ {_=>"いろいろ間違ってます"}
   def eol = "\r\n"|"\r"|"\n"
   def jiraLine = jiraID ~ jiraDesc ^^ {x => buildFormula(x._1) + x._2} | jiraID ^^ {buildFormula(_)}
   def jiraID = (("[" ~> """\w+-\d+""".r <~ "]") | """[A-Z]+-\d+""".r)
